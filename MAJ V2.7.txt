@@ -1,0 +1,30 @@
+Lien de présentation : *https://youtu.be/jILLGyGnxW4*
+
+
+**En plus des MAJ de la 2.1**
+01/05/21 - V2.7
+```
+- Ajouts de 35 jobs pôle emploi
+- Modification visuel du nb menu perso
+- Modification visuel des magasins de masques 
+- Modifications visuel des shops de vêtements
+- Modification du système de drogues
+- Ajout de concessionnaire divers géré par des joueurs
+- Ajout des Sapeurs Pompiers
+- Ajout de mappings lié aux jobs et décoratifs
+- Modification de tout les blips de la carte 
+- Ajout d'une entreprise (type Eurotruck simulator) Roft entreprise
+- Implantation de la Brinks et diversification des missions
+- Implantation et délocalisation de l'hôpital
+- Implantation et délocalisation du Mecano
+- Refonte du gouvernement et ajout d'un système de taxes (impôts) 
+- Ajout d'un mapping gouvernement inédit
+- Ajout d'un radio Ingame (Talkie Walkie) portée 200m 
+- Ajout de radio voiture francaise (Nrj, CherieFM ect ect)
+```
+
+05/05/21 - V2.7.1
+```
+- Fix du cardealer
+- Ajout d'un système complémentaire pour les pompiers
+```

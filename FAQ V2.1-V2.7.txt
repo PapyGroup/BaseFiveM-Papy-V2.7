@@ -1,0 +1,100 @@
+**Erreurs SQL lors de l'injection :**
+Si votre sql lors de l'injection ressort cette erreur : 
+```#1101 - BLOB 'health' ne peut avoir de valeur par défaut```
+Il va falloir pour vous réécrire le sql seulement sur une partie et ajouter des varchar (250) pour contourner le Pb. 
+Cette erreur est **lié a votre hébergeur** et **non pas à la Base Papy**. C'est lié aux versions de PhpmyAdmin de vos hébergeurs.
+Erreurs connu chez : CroHosting et Isaper et  Oxinode
+Erreurs inconnu chez : Zaphosting et Nexus
+
+*Régler ceci sur les version 2.4 à 2.6*
+Remplacer dans votre fichier sql ceci : (Ligne 2200 à 2212)
+```--
+-- Structure de la table `t1ger_mechanic`
+--
+
+CREATE TABLE `t1ger_mechanic` (
+  `identifier` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `shopID` int(11) NOT NULL,
+  `name` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT 'Mechanic Shop',
+  `money` int(11) NOT NULL DEFAULT 0,
+  `employees` varchar(250) NOT NULL DEFAULT '[]',
+  `storage` varchar(250) NOT NULL DEFAULT '[]'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+Et ensuite : (Ligne 1792)
+```  `health` varchar(250) NOT NULL DEFAULT '[{"value":100,"part":"electronics"},{"value":100,"part":"fuelinjector"},{"value":100,"part":"brakes"},{"value":100,"part":"radiator"},{"value":100,"part":"driveshaft"},{"value":100,"part":"transmission"},{"value":100,"part":"clutch"}]',```
+
+**Changer Menu Pause**
+```Aller dans : /resources/[system]/system```
+
+**Changer de loadinscreen**
+```Aller dans : \resources\[loading_screen]\guidehud```
+
+**Fix le soucis esx_identity** (si vous avez un soucis normalement non...)
+```Remplacer celui de la base par celui ci : https://mega.nz/file/caJD0AbR#w4A-9hVZvvwPH-Cohb9ovXxQCbD7kDJJk6muzcCWIRY```
+
+**Je n'arrive pas à créer mon  personnage... comment faire ?**
+```Essayer dans un premier temps de voir si vous avez bien injecté le sql.
+Ensuite essayer de voir si vous avec le script qui a bien démarré. 
+Essayer de voir ensuite lorsque vous créer votre personnage si  vous n'avez pas "missclick" par exemple la touche TAB
+Sinon essayer d'installer un autre esx_identity 
+
+```
+**J'ai des soucis de chargement lié au script screenshot basic que faire ?**
+```Si c'est la cas et que votre machine n'arrive pas à démarrer la ressource. Désactiver là tout simplement. Elle n'influence en rien votre expérience sur la base papy```
+
+**Pourquoi je n'arrive pas a récolter le lsd et la weed par exemple ?**
+```Pour récolter ceci il faut vous munir d'une  pelle, a vous de l'implanter  dans un shop illégal par exemple afin que  les joueurs puissent l'acheter. Vous trouverez le nom de l'item dans  votre base de données dans la table item```
+
+**Quel est  la version de l'es-extended des bases Papy ?**
+``` Version 3, 29 June 2007```
+
+**Quel est  la version de l'essentialmode des bases Papy ?**
+```Version 3, 19 November 2007```
+
+**Est ce  que  tout est  modifiable dans les bases papy ?**
+```OUI !```
+
+**Mon agent immobilier ne marche pas pourquoi sur la V2.7 ?** 
+```Il vous suffit juste de l'installer directement dans la base via ce lien : 
+https://mega.nz/file/cGhFzSBB#sZG6PZ7TsbyyhQ9BAKkE27HqSTcMHpRwifZa9JdCqtQ
+C'est un oubli...
+Le sql est déjà présent ne pas l'injecter```
+
+**Mon menu F5 ne marche que  partiellement, que faire ?**
+```
+Donner les papiers de l'avion/l'hélico ne  marche pas par exemple ? 
+Injecter ce bout de sql dans votre base de donnée :
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `owned_vehicles3`
+--
+
+CREATE TABLE `owned_vehicles3` (
+  `owner` varchar(30) COLLATE utf8mb4_bin NOT NULL,
+  `plate` varchar(12) COLLATE utf8mb4_bin NOT NULL,
+  `vehicle` longtext COLLATE utf8mb4_bin NOT NULL,
+  `type` varchar(20) COLLATE utf8mb4_bin NOT NULL DEFAULT 'car',
+  `job` varchar(20) COLLATE utf8mb4_bin NOT NULL DEFAULT '',
+  `stored` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- --------------------------------------------------------
+```
+
+**Quel script gère les soins automatiques ? (Clinique automatique)**
+```Vous trouverez ce script ici : resources\[esxmods]\esx_med
+Vous pouvez le configurer dans le config.lua
+Seulement pour la base v2.7
+```
+
+**J'ai  des soucis vocaux sur la base Papy Brossard comment faire ?**
+```
+Télécharger le lien ci contre : https://mega.nz/file/EKYTyC6T#OfhjXol7QzbmeF-M-NLLUpIQB41A-6NyIIu3Tew9XhU
+Une fois le lien télécharger remplacer les scripts vocaux de la base par celui du nouveau dossier. 
+Starter le tout dans votre server.cfg
+Redémarrer votre serveur FiveM
+```
+
